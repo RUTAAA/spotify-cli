@@ -11,6 +11,12 @@ Après faut remplir `config.py` à partir de la configuration de votre app.
 
 ## UTILISATION
 
+Pour toggle play / pause:
+
+```
+python main.py play_pause
+```
+
 Pour sauvegarder le son en cours de lecture:
 
 ```

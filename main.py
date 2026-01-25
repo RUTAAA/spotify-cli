@@ -159,11 +159,24 @@ def switch_shuffle_state():
     put_api("/me/player/shuffle", params)
 
 
+def toggle_play_pause():
+    result = get_api("/me/player")
+    if not result:
+        return
+    is_playing = result.get("is_playing")
+    if is_playing:
+        put_api("/me/player/pause", {})
+    else:
+        put_api("/me/player/play", {})
+
+
 if __name__ == "__main__":
     if config.REFRESH_TOKEN == "" and config.ACCESS_TOKEN == "":
         login()
     if len(sys.argv) > 1:
         match sys.argv[1]:
+            case "play_pause":
+                toggle_play_pause()
             case "save":
                 save_current_track()
             case "repeat":
