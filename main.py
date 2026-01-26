@@ -4,6 +4,7 @@ import threading
 import urllib.parse
 import webbrowser
 from http.server import BaseHTTPRequestHandler, HTTPServer
+from turtle import resetscreen
 
 import requests
 
@@ -170,6 +171,15 @@ def toggle_play_pause():
         put_api("/me/player/play", {})
 
 
+def change_volume(step):
+    result = get_api("/me/player")
+    if not result:
+        return
+    volume = result.get("device").get("volume_percent")
+    params = {"volume_percent": max(min(volume + step, 100), 0)}
+    put_api("/me/player/volume", params)
+
+
 if __name__ == "__main__":
     if config.REFRESH_TOKEN == "" and config.ACCESS_TOKEN == "":
         login()
@@ -183,3 +193,7 @@ if __name__ == "__main__":
                 switch_repeat_state()
             case "shuffle":
                 switch_shuffle_state()
+            case "volume_up":
+                change_volume(+5)
+            case "volume_down":
+                change_volume(-5)

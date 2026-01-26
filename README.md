@@ -2,7 +2,7 @@
 
 C'est un scipt Python pour interagir avec l'API de Spotify.
 J'ai fait ça pour bind des macros à ma manette.
-J'ai pas fait tout l'API car flemme + useless mais c'est une bonne base. Bien que le code soit ni propre, ni commenté, ni robuste, mais trkl.
+J'ai pas fait tout l'API car flemme + useless mais c'est une bonne base. Bien que le code ne soit ni propre, ni commenté, ni robuste, mais trkl.
 
 ## CONFIGURATION
 
@@ -33,4 +33,16 @@ Pour toggle le mode de aléatoire:
 
 ```
 python main.py shuffle
+```
+
+Pour monter le volume:
+
+```
+python main.py volume_up
+```
+
+Pour descendre le volume:
+
+```
+python main.py volume_down
 ```
